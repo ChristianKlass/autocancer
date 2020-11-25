@@ -30,18 +30,23 @@ func main() {
 
 func uwuize(input string) string {
 	var output string
-	strings.ReplaceAll(input, "r", "w")
-	strings.ReplaceAll(input, "R", "W")
-	strings.ReplaceAll(input, "l", "w")
-	strings.ReplaceAll(input, "L", "W")
+	input = strings.ReplaceAll(input, "r", "w")
+	input = strings.ReplaceAll(input, "l", "w")
+	input = strings.ReplaceAll(input, "L", "W")
+	input = strings.ReplaceAll(input, "R", "W")
 
 	for _, rune := range input {
 		char := string(rune)
-		outputLast := output[len(output)-1:]
+		outputLast := ""
+
+		if len(output) != 0 {
+			outputLast = output[len(output)-1:]
+		}
 
 		if (char == "o" || char == "O") && (strings.ContainsAny("MmNn", outputLast)) {
 			output += "y"
 		}
+
 		output += string(rune)
 	}
 
