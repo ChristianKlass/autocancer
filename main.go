@@ -7,20 +7,22 @@ import (
 )
 
 func main() {
+	if len(os.Args) != 3 {
+		fmt.Println("Wrong number of arguments!")
+		fmt.Println("It's -> autocancer.go <cancertype> <input>")
+		return
+	}
+
+	var answer string
 	action := os.Args[1]
 	input := os.Args[2]
-	var answer string
 
-	if input != "" {
-		if action == "cancerize" {
-			answer = cancerize(input)
-		} else if action == "boomerspeak" {
-			answer = boomerSpeak(input)
-		} else {
-			answer = "invalid cancer"
-		}
+	if action == "cancerize" {
+		answer = cancerize(input)
+	} else if action == "boomerspeak" {
+		answer = boomerSpeak(input)
 	} else {
-		fmt.Println("There's no input to cancerize!")
+		answer = "invalid cancer"
 	}
 
 	fmt.Println(answer)
