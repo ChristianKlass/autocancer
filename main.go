@@ -17,8 +17,8 @@ func main() {
 	action := os.Args[1]
 	input := os.Args[2]
 
-	if action == "cancerize" {
-		answer = cancerize(input)
+	if action == "uwu" {
+		answer = uwuize(input)
 	} else if action == "boomerspeak" {
 		answer = boomerSpeak(input)
 	} else {
@@ -28,9 +28,24 @@ func main() {
 	fmt.Println(answer)
 }
 
-func cancerize(input string) string {
-	input += " cancered"
-	return input
+func uwuize(input string) string {
+	var output string
+	strings.ReplaceAll(input, "r", "w")
+	strings.ReplaceAll(input, "R", "W")
+	strings.ReplaceAll(input, "l", "w")
+	strings.ReplaceAll(input, "L", "W")
+
+	for _, rune := range input {
+		char := string(rune)
+		outputLast := output[len(output)-1:]
+
+		if (char == "o" || char == "O") && (strings.ContainsAny("MmNn", outputLast)) {
+			output += "y"
+		}
+		output += string(rune)
+	}
+
+	return output
 }
 
 func boomerSpeak(input string) string {
