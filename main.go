@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -31,6 +32,16 @@ func cancerize(input string) string {
 }
 
 func boomerSpeak(input string) string {
-	input += " boomered"
-	return input
+	var output string
+
+	input = strings.ToLower(input)
+	for index, rune := range input {
+		if index%2 == 1 {
+			output += strings.ToUpper(string(rune))
+		} else {
+			output += string(rune)
+		}
+	}
+
+	return output
 }
